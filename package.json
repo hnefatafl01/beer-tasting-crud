@@ -1,0 +1,23 @@
+{
+  "name": "a-day-of-crud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hnefatafl01/beer-tasting-crud.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hnefatafl01/beer-tasting-crud/issues"
+  },
+  "homepage": "https://github.com/hnefatafl01/beer-tasting-crud#readme",
+  "dependencies": {
+    "knex": "^0.12.6",
+    "pg": "^6.1.1"
+  }
+}
