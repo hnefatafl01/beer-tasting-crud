@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Beers Tasted</h1>
+</div>
+<div class="row container-fluid">
+  <div class="col-md-4">
+    {{#each beerData}}
+      <h2><a href="/{{this.id}}">{{this.beer_name}}</h2>
+    {{/each}}
+  </div>
+  <div class="col-md-4">
+    {{#each beerData}}
+      <h2><a href="/{{this.id}}">{{this.abv}}</h2>
+    {{/each}}
+  </div>
+  <div class="col-md-4">
+    {{#each beerData}}
+      <h2><a href="/{{this.id}}">{{this.brewery_name}}</h2>
+    {{/each}}
+  </div>
+</div>

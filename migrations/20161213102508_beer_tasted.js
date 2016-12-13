@@ -1,14 +1,14 @@
 
 exports.up = function(knex, Promise) {
-  knex.schema.createTable('beer_tasted', (table) => {
-    table.increment();
+  return knex.schema.createTable('beer_tasted', (table) => {
+    table.increments();
     table.varchar('beer_name').notNullable();
     table.varchar('brewery_name').nullable();
-    table.numeric('abv').nullable();;
+    table.float('abv').nullable();;
     table.date('tasted').notNullable();;
   })
 };
 
 exports.down = function(knex, Promise) {
-  knex.schema.dropTableIfExists('beer_tasted');
+  return knex.schema.dropTableIfExists('beer_tasted');
 };
