@@ -1,16 +1,16 @@
-<h1>Edit Tasted Beers</h1>
-<form action="/<%= beer_tasted.id%>?_method=put" method="POST">
+<h1>Update Tasted Beers</h1>
+<form action="/{{id}}?_method=PUT" method="post">
   <div class="form-group">
-    <label for="beer-name">Beer Name</label>
+    <label for="beer-name">Update Beer Name</label>
     <input type="text" class="form-control" name="beer_name">
   </div>
   <div class="form-group">
-    <label for="brewery-name">Brewery</label>
+    <label for="brewery-name">Update Brewery</label>
     <input type="text" class="form-control" name="brewery_name">
   </div>
   <div class="form-group">
-    <label for="abv">ABV</label>
+    <label for="abv">Update ABV</label>
     <input type="number"  step="0.1" min="0" name="abv">
   </div>
-  <button type="submit" class="btn btn-default">Update Beer</button>
+  <button href="/{{id}}" type="submit" class="btn btn-default">Update</button>
 </form>
