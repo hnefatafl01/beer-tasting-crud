@@ -5,7 +5,7 @@ var knex = require('../db/knex');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'BREWRecord'})
+  res.render('index', {title: 'BREWRecord'})
 
 });
 
@@ -17,7 +17,7 @@ router.get('/beerTasted', function(req, res, next) {
 })
 
 router.get('/new', function(req, res, next) {
-  res.render('new', { title: 'Newly Tasted Beers'})
+  res.render('new', {title: 'Newly Tasted Beers'})
 })
 
 router.post('/', function(req, res) {
@@ -26,24 +26,26 @@ router.post('/', function(req, res) {
     req.body
   ).returning('id')
   .then(function(id) {
-    console.log(id[0]);
+    // console.log(id[0]);
     res.redirect('/' + id[0]);
   })
 })
 
-router.get('/:id')
-
-// router.get('/:id', function(req, res, next) {
-//   db.get(req.params.id).then(function (data))//knex(tablename).select().where(id = req.params.id)
-//   res.render('index', { title: 'BREWRecord' });
-//
-// });
+router.get('/:id', function(req,res,next) {
+  knex('beer_tasted').select('tasted','beer_name','abv', 'brewery_name')
+  .where('id', req.params.id)
+  .first()
+  .then(function(beer) {
+    res.render('newbeer', {
+      newBeer_name: beer.beer_name,
+      newBeer_brewery: beer.brewery_name,
+      newBeer_abv: beer.abv,
+      newBeer_date: beer.tasted
+    });
+  })
+})
 
 module.exports = router;
-
-// get data from database with knex
-// knex('table').then((rows) => {res.render('index.hbs', rows)})
-
 
 // knex.('student')
 //   .insert({
