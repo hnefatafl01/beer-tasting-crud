@@ -46,28 +46,19 @@ router.get('/:id', function(req,res,next) {
 });
 // show edit page
 router.get('/:id/edit', function(req,res,next) {
-  knex('beer_tasted').select('tasted','beer_name','abv', 'brewery_name')
+  knex('beer_tasted')
   .where('id', req.params.id)
+  .first()
   .then(function(beer) {
-    res.render('edit', {
-      addbeer_name: beer.beer_name,
-      addbeer_brewery: beer.brewery_name,
-      addbeer_abv: beer.abv,
-    })
+    res.render('edit', beer)
   })
 });
-
+//update beer
 router.put('/:id',function (req,res,next) {
-  knex('beer_tasted').select('tasted','beer_name','abv', 'brewery_name')
+  knex('beer_tasted')
   .where('id', req.params.id)
-  .update({
-    addbeer_name: beer.beer_name,
-    addbeer_brewery: beer.brewery_name,
-    addbeer_abv: beer.abv,
-    addbeer_date: beer.tasted
-  })
-  .then(function(beer) {
-    res.redirect(`/${id}`);
+  .update(req.body).then(function() {
+    res.redirect('/' + req.params.id);
   })
 });
 
